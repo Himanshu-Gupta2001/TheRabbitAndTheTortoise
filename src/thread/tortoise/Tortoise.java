@@ -2,56 +2,47 @@ package thread.tortoise;
 
 import javax.swing.*;
 
-public class Tortoise {
+public class Tortoise extends Thread {
 
     private static final int MILESTONES = 5;
 
-    private final Thread rabbit;
-
-    public Rabbit() {
-        this.rabbit = new Thread(this, "Rabbit");
+    // 1.Create a public constructor
+    public Tortoise() {
+        // Call the super constructor
+        super("Tortoise");
     }
 
-    public Thread getRabbit() {
-        return rabbit;
-    }
-
+    // 2.Override the run method from Thread Class.
     @Override
     public void run() {
         for (int index = 0; index < MILESTONES; index++) {
             switch (index) {
                 case 0:
-                    System.out.println("The Rabbit has started from the start line!");
+                    System.out.println("The Tortoise has started from the start line!");
                     break;
                 case 1:
-                    System.out.println("The Rabbit has reached the Cool River!");
+                    System.out.println("The Tortoise has reached the Cool River!");
                     break;
                 case 2:
-                    System.out.println("The Rabbit has reached the Mountain Hill!");
+                    System.out.println("The Tortoise has reached the Mountain Hill!");
                     break;
                 case 3:
-                    System.out.println("The Rabbit has reached the Big Oak Tree!");
-                    System.out.println("The Rabbit is leading and hence is going to sleep!");
-                    try {
-                        Thread.sleep(9000L);
-                    } catch (InterruptedException e) {
-                        System.err.println("The Rabbit's sleep got interrupted!");
-                    }
+                    System.out.println("The Tortoise has reached the Big Oak Tree!");
                     break;
                 case 4:
-                    System.out.println("The Rabbit has reached the finish line!");
+                    System.out.println("The Tortoise has reached the finish line!");
                     break;
             }
             try {
-                Thread.sleep(1500L);
+                Thread.sleep(3000L);
             } catch (InterruptedException e) {
-                System.err.println("The rabbit has lost the path!");
+                System.err.println("The Tortoise has lost the path!");
             }
         }
         JOptionPane.showConfirmDialog(
                 null,
-                "The Rabbit has completed the race!",
-                "Rabbit",
+                "The Tortoise has completed the race!",
+                "Tortoise",
                 JOptionPane.OK_CANCEL_OPTION
         );
     }
